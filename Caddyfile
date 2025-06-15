@@ -1,0 +1,26 @@
+hire.smeister.xyz, www.hire.smeister.xyz {
+    encode zstd gzip
+    
+    # WebSocket proxy with proper headers
+    @websocket {
+        header Connection *Upgrade*
+        header Upgrade websocket
+    }
+    reverse_proxy @websocket localhost:8001
+
+    # API routes
+    reverse_proxy /api/* localhost:8001
+    
+    # Frontend
+    reverse_proxy localhost:3000
+    
+    # Security headers
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Frame-Options "DENY"
+        X-Content-Type-Options "nosniff"
+        X-XSS-Protection "1; mode=block"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    }
+}

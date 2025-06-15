@@ -1,0 +1,47 @@
+# docker-compose.yml  (only the changed bits)
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        PUBLIC_API_BASE_URL: ${PUBLIC_API_BASE_URL}
+    container_name: smeister_front
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      - PUBLIC_API_BASE_URL=${PUBLIC_API_BASE_URL}
+    env_file:
+      - .env
+
+  backend:
+    build: ./backend
+    container_name: smeister_back
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8001:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    networks:
+      - smeister_network
+    volumes:
+      - ./backend/static:/app/static:ro
+
+  redis:
+    image: redis:7-alpine
+    container_name: smeister_redis
+    restart: unless-stopped
+    networks:
+      - smeister_network
+    volumes:
+      - redis_data:/data
+
+networks:
+  smeister_network:
+    driver: bridge
+
+volumes:
+  redis_data:

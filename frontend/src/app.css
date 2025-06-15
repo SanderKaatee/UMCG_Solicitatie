@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: theme('colors.primary.500');
+    --color-surface: theme('colors.surface.50');
+  }
+  
+  .dark {
+    --color-primary: theme('colors.primary.400');
+    --color-surface: theme('colors.surface.800');
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 dark:bg-surface-800/80 backdrop-blur-md rounded-2xl shadow-xl border border-surface-200 dark:border-surface-700;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
