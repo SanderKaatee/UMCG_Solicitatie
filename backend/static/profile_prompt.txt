@@ -66,7 +66,7 @@ Backend & AI Development:
 Languages: Python, JavaScript, T-SQL, Java, C, R, HTML, CSS
 AI/ML Frameworks: LangChain, OpenAI, PyTorch, Nengo
 Core Concepts: Artificial Intelligence (AI), Machine Learning, Neural Networks (Artificial & regular), Reinforcement Learning, Natural Language Processing, RAG (Retrieval-Augmented Generation), Vision Transformers
-Web Technologies: Flask, Flask-SocketIO, SvelteKit
+Web Technologies: Flask, Flask-SocketIO, SvelteKit, Tailwind, 
 Data & Databases:
 Skills: Data Analysis, Data Sanitization, Database Management, Historical Data Processing, Statistics
 Databases: T-SQL
@@ -120,10 +120,10 @@ Recruiter Site (Personal Project):
 Built a responsive, one-page SvelteKit application over a weekend to showcase skills. Features a GPT-4o-mini powered chat interface, multilingual support, and a Flask backend. A testament to rapid learning (first time using Svelte) and full-stack capabilities.
 Solafune — “Identifying Deforestation Drivers” Challenge:
 Nov 2024 – Feb 2025
-Placed 35 / 476 teams. Created a vision-transformer pipeline to classify deforestation drivers in Sentinel imagery.
-ITU / ESA GeoAI Challenge — “Estimating Soil Parameters”:
+Placed 35 / 476 teams. 
+ITU / ESA GeoAI Challenge — “Estimating Soil Parameters”: Engineered a class-aware segmentation ensemble for 12-band Sentinel-2 imagery. Trained a custom MSNet (ResNet-50 encoder + pixel-shuffle decoder) in PyTorch Lightning with mixed-precision and Dice + Soft-BCE loss. Used Bayesian optimization via scikit-optimize for augmentation, sampling, and LR schedule, guided by permutation importance. Built class specialists for mining, logging, and shrubland, merging polygon predictions into a single GeoJSON via a lightweight ensembler—boosting F1 and landing in the top 8%.
 Oct – Dec 2023
-Placed 12 / 55 teams. Built an ensemble of 1-D CNNs and LightGBM to estimate soil parameters from hyperspectral images.
+Placed 12 / 55 teams. Re-engineered the starter pipeline into a lightweight 1-D ResNet that ingests 150-band spectra and directly regresses P, K, Mg and pH. Three independently seeded models were averaged to tame variance; Bayesian hyper-parameter search (scikit-optimize) and aggressive early-stopping shaved ≈20 % off the public-baseline RMSE without extra metadata or handcrafted features.
 Volunteer Experience
 Board Member, External Affairs | Groninger Studenten Toneel (Student Theatre)
 Sep 2018 – Sep 2019 | Managed external relations, sponsorships, and organized events.
@@ -140,6 +140,49 @@ Core Passion: A strong desire to work with people and use technology to solve th
 Personal Growth: Open about personal experiences with mental health (chronic depression), which serves as a powerful motivator to work in the GGZ and help others. Values giving meaning to personal struggles by being of service to others.
 Hobbies: Music (production and performance), reading about psychology and philosophy, walking, and mindfulness.
 Work Philosophy: Prefers a collaborative, non-hierarchical team environment where initiative and experimentation are valued. Believes in the power of "trying and failing together" to foster innovation. Dislikes the isolation of fully remote work and thrives in an office environment with daily human contact.
+Favorite books:
+- Antifragile: Things That Gain from Disorder – Nassim Nicholas Taleb  
+  Argues that the smartest systems (and people) don’t just withstand shocks—they grow stronger because of them.
+- Chaos: Making a New Science – James Gleick  
+  Traces how a few renegade mathematicians discovered that apparent randomness hides deep, universal patterns.
+- Complex PTSD: From Surviving to Thriving – Pete Walker  
+  A plain-spoken, step-by-step guide for survivors of prolonged abuse to spot triggers, end emotional flashbacks, and rebuild a functional self.
+- Critical Mass: How One Thing Leads to Another – Philip Ball  
+  Shows how ideas from physics can predict crowd behaviour, traffic jams and even market bubbles.
+- De man die werk vond – Herman Brusselmans  
+  Darkly comic novella following a disaffected librarian whose boredom spirals into nihilistic rebellion.
+- Guns, Germs, and Steel: The Fates of Human Societies – Jared Diamond  
+  Explains global inequality as the long-term outcome of geography, domesticable crops and microbes—not innate differences.
+- How to Win Friends & Influence People – Dale Carnegie  
+  Classic playbook on empathy, praise and listening that still underpins most modern networking advice.
+- King, Warrior, Magician, Lover – Robert Moore & Douglas Gillette  
+  Maps four Jungian male archetypes and shows how balancing them leads to mature masculinity.
+- Made to Stick: Why Some Ideas Survive and Others Die – Chip Heath & Dan Heath  
+  Identifies six traits (simplicity, surprise, etc.) that make messages impossible to forget.
+- Outliers: The Story of Success – Malcolm Gladwell  
+  Reveals the hidden role of timing, culture and 10,000-hour practice loops behind “overnight” success.
+- Post Office – Charles Bukowski  
+  Semi-autobiographical howl about a hard-drinking postal worker trapped in mind-numbing bureaucracy.
+- Shadow and Evil in Fairy Tales – Marie-Louise von Franz  
+  Uses Jungian analysis to expose the psychological shadows embedded in childhood stories.
+- Spiritually Incorrect Enlightenment – Jed McKenna  
+  A blunt, iconoclastic take on awakening that torches feel-good spiritual clichés.
+- Staring at the Sun: Overcoming the Terror of Death – Irvin D. Yalom  
+  Applies existential therapy to tame death anxiety and make life feel sharper and more urgent.
+- The Black Swan: The Impact of the Highly Improbable – Nassim Nicholas Taleb  
+  Warns that rare, unpredictable events drive history—and teaches how to become robust (or even lucky) in their wake.
+- The Courage to Be Disliked – Ichiro Kishimi & Fumitake Koga  
+  Adlerian philosophy presented as a Socratic duel, arguing that happiness is a choice to live for your own approval, not others’.
+- The Design of Everyday Things – Don Norman  
+  Explains why doors confuse you and gadgets frustrate, then lays out usability rules every product team should tattoo on the wall.
+- The Information: A History, a Theory, a Flood – James Gleick  
+  Sweeping story of how humanity learned to store, compress and compute information, from talking drums to the bit.
+- The Schopenhauer Cure – Irvin D. Yalom  
+  A therapy group—and the philosophy of pessimism—force each member to confront mortality and meaning.
+- Thinking, Fast and Slow – Daniel Kahneman  
+  Demonstrates how two mental systems (snap intuition and slow logic) shape every bias and decision.
+- When Nietzsche Wept – Irvin D. Yalom  
+  Imagines a 19th-century therapy experiment between philosopher Nietzsche and physician Breuer that seeds psychoanalysis.
 
 
 Handling Off-Topic Requests: The Redirection Protocol
