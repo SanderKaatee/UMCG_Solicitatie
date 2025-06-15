@@ -1,10 +1,21 @@
 <script lang="ts">
   import { language, t } from '$lib/stores/language';
+  import { onMount } from 'svelte';
   
   let isLoading = true;
+  let iframeElement: HTMLIFrameElement;
   
   function handleLoad() {
     isLoading = false;
+    // Debug: log what actually loaded
+    if (iframeElement) {
+      console.log('Iframe loaded:', iframeElement.src);
+      try {
+        console.log('Iframe actual URL:', iframeElement.contentWindow?.location.href);
+      } catch (e) {
+        console.log('Cannot access iframe location (cross-origin)');
+      }
+    }
   }
   
   // Reactive statement to determine PDF path based on language
@@ -17,10 +28,17 @@
     ? 'Sander_Kaatee_Resume_EN.pdf'
     : 'Sander_Kaatee_CV_NL.pdf';
   
+  // Debug: log when language or path changes
+  $: console.log('Language:', $language, 'PDF Path:', pdfPath);
+  
   // Reset loading state when language changes
   $: if ($language) {
     isLoading = true;
   }
+  
+  onMount(() => {
+    console.log('PdfEmbed mounted, initial language:', $language);
+  });
 </script>
 
 <div class="glass-card p-6 h-[800px] flex flex-col">
@@ -42,11 +60,20 @@
       </div>
     {/if}
     
-    <iframe
-      src={pdfPath}
-      title="CV"
-      class="w-full h-full rounded-lg"
-      on:load={handleLoad}
-    />
+    <!-- Only render iframe if we have a valid path -->
+    {#if pdfPath}
+      <iframe
+        bind:this={iframeElement}
+        src={pdfPath}
+        title="CV"
+        class="w-full h-full rounded-lg"
+        on:load={handleLoad}
+        on:error={(e) => console.error('Iframe error:', e)}
+      />
+    {:else}
+      <div class="absolute inset-0 flex items-center justify-center">
+        <p class="text-surface-500">PDF path not set</p>
+      </div>
+    {/if}
   </div>
 </div>
