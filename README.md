@@ -1,212 +1,254 @@
-# Sander Kaatee - Recruiter Site
+# Sander Kaatee - Interactive Recruiter Site
 
 A modern, responsive one-page application designed to showcase Sander Kaatee's skills and experience to recruiters. Features an AI-powered chat interface, motivation letter, and CV viewer with Dutch/English language support.
 
 ## 🚀 Features
 
-- **AI Chat Interface**: Real-time streaming chat powered by GPT-4o-mini
+- **AI Chat Interface**: Real-time streaming chat powered by GPT-4o-mini with custom persona
 - **Multilingual**: Full Dutch and English support with instant switching
 - **Dark Mode**: Automatic theme detection with manual toggle
 - **Mobile-First**: Fully responsive design optimized for all devices
-- **Glassmorphism UI**: Modern, clean aesthetic inspired by chat4data.ai
-- **WebSocket Communication**: Real-time bidirectional communication
-- **Rate Limiting**: Redis-based rate limiting (5 requests/minute)
-- **Security**: HTTPS, security headers, input validation
+- **Interactive UI**: Particle backgrounds, smooth animations, and glassmorphism design
+- **WebSocket Communication**: Real-time bidirectional communication with fallback
+- **Rate Limiting**: Redis-based rate limiting (5 requests/minute per IP)
+- **Security**: HTTPS, comprehensive security headers, input validation
+- **PDF Integration**: Embedded CV viewer with download capability
 
 ## 🛠 Tech Stack
 
-- **Frontend**: SvelteKit 2.x, TailwindCSS, TypeScript
-- **Backend**: Flask 3.x, Python 3.12, OpenAI API
-- **WebSocket**: Flask-SocketIO with async support
-- **Database**: Redis for rate limiting
-- **Deployment**: Docker, Docker Compose, Caddy
+### Frontend
+- **SvelteKit 2.x** - Modern full-stack framework
+- **TypeScript** - Type-safe development
+- **TailwindCSS** - Utility-first CSS framework
+- **Socket.IO Client** - Real-time WebSocket communication
+- **TSParticles** - Interactive particle backgrounds
+- **UUID** - Unique session identification
+
+### Backend
+- **Flask 3.x** - Lightweight Python web framework
+- **Python 3.12** - Latest Python with async support
+- **OpenAI API** - GPT-4o-mini for AI chat responses
+- **Flask-SocketIO** - WebSocket server with eventlet
+- **Redis** - In-memory data store for rate limiting
+- **Gunicorn** - Production WSGI server
+
+### Infrastructure
+- **Docker & Docker Compose** - Containerized deployment
+- **Caddy 2** - Automatic HTTPS and reverse proxy
+- **Alpine Linux** - Lightweight container images
 
 ## 📋 Prerequisites
 
 - Docker & Docker Compose
 - OpenAI API key
-- Domain with DNS pointing to your server
-- Hetzner VPS (or similar) with Caddy installed
+- Domain with DNS pointing to your server (for production)
+- Redis server (handled by Docker Compose)
 
 ## 🚀 Quick Start
 
-### Local Development
+### Development Setup
 
-1. Clone the repository:
+1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/sander-kaatee-hire.git
-cd sander-kaatee-hire
+git clone <repository-url>
+cd sander-kaatee-recruiter-site
 ```
 
-2. Copy environment variables:
+2. **Environment Configuration**
 ```bash
 cp .env.sample .env
 ```
 
-3. Edit `.env` and add your OpenAI API key:
-```bash
-OPENAI_API_KEY=sk-your-api-key-here
+Edit `.env` with your configuration:
+```env
+# OpenAI Configuration
+OPENAI_API_KEY=sk-your-openai-api-key
+
+# Application Settings
+PUBLIC_WS_URL=ws://localhost:8001/ws/chat
+PUBLIC_API_URL=http://localhost:8001/api
 ```
 
-4. Start the application:
+3. **Start Development Environment**
 ```bash
-docker compose up -d --build
+docker-compose up --build
 ```
 
-5. Open http://localhost:3000
+4. **Access the Application**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8001
+- Health Check: http://localhost:8001/api/health
 
 ### Production Deployment
 
-1. SSH into your VPS:
+1. **Configure Production Environment**
+```env
+# Production URLs
+PUBLIC_WS_URL=wss://your-domain.com/ws/chat
+PUBLIC_API_URL=https://your-domain.com/api
+OPENAI_API_KEY=sk-your-production-key
+```
+
+2. **Update Caddyfile**
+```caddyfile
+your-domain.com, www.your-domain.com {
+    encode zstd gzip
+    
+    # WebSocket proxy
+    @websocket {
+        header Connection *Upgrade*
+        header Upgrade websocket
+    }
+    reverse_proxy @websocket localhost:8001
+
+    # API routes
+    reverse_proxy /api/* localhost:8001
+    
+    # Frontend
+    reverse_proxy localhost:3000
+    
+    # Security headers
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Frame-Options "DENY"
+        X-Content-Type-Options "nosniff"
+        X-XSS-Protection "1; mode=block"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    }
+}
+```
+
+3. **Deploy**
 ```bash
-ssh root@your-server-ip
+docker-compose up -d --build
 ```
 
-2. Clone the repository:
+## 🏗 Architecture
+
+### Frontend Structure
+```
+frontend/
+├── src/
+│   ├── lib/
+│   │   ├── components/     # Reusable Svelte components
+│   │   ├── stores/         # Global state management
+│   │   └── types/          # TypeScript definitions
+│   ├── routes/             # SvelteKit pages and API routes
+│   └── app.html            # HTML template
+├── static/                 # Static assets
+└── tailwind.config.js      # Styling configuration
+```
+
+### Backend Structure
+```
+backend/
+├── app/
+│   ├── __init__.py         # Flask app factory
+│   ├── routes.py           # API endpoints and WebSocket handlers
+│   ├── openai_client.py    # OpenAI API integration
+│   ├── rate_limiter.py     # Redis-based rate limiting
+│   └── config.py           # Application configuration
+├── static/
+│   └── profile_prompt.txt  # AI persona system prompt
+└── requirements.txt        # Python dependencies
+```
+
+## 🤖 AI Chat Features
+
+The AI chat interface includes:
+
+- **Custom Persona**: Specialized AI assistant representing Sander Kaatee
+- **Professional Context**: Deep knowledge of Sander's experience and skills
+- **Rate Limiting**: 5 requests per minute per IP address
+- **Real-time Streaming**: WebSocket-based communication
+- **Error Handling**: Graceful fallbacks and user feedback
+- **Conversation Continuity**: Maintains context throughout the chat
+
+### Chat Commands
+The AI can discuss:
+- Sander's professional experience and skills
+- Technical projects and achievements
+- Career motivations and goals
+- Specific questions about his background
+
+## 🎨 Design Features
+
+- **Glassmorphism UI**: Modern frosted glass aesthetic
+- **Particle Backgrounds**: Interactive particle systems
+- **Smooth Animations**: CSS transitions and transforms
+- **Responsive Design**: Mobile-first approach
+- **Accessibility**: WCAG-compliant color contrast and navigation
+- **Performance**: Optimized images and lazy loading
+
+## 🔒 Security Features
+
+- **Rate Limiting**: Redis-based request throttling
+- **Input Validation**: Server-side message sanitization
+- **HTTPS Enforcement**: Automatic SSL/TLS with Caddy
+- **Security Headers**: HSTS, CSP, and other protective headers
+- **CORS Configuration**: Controlled cross-origin requests
+
+## 📊 Monitoring & Health Checks
+
+- **Health Endpoints**: `/healthz` and `/api/health`
+- **Error Logging**: Comprehensive server-side logging
+- **Rate Limit Monitoring**: Redis-based request tracking
+
+## 🛠 Development
+
+### Adding New Features
+
+1. **Frontend Components**: Add to `frontend/src/lib/components/`
+2. **Backend Routes**: Extend `backend/app/routes.py`
+3. **Styling**: Use TailwindCSS utility classes
+4. **State Management**: Utilize Svelte stores in `frontend/src/lib/stores/`
+
+### Testing
+
 ```bash
-cd /srv
-git clone https://github.com/yourusername/sander-kaatee-hire.git
-cd sander-kaatee-hire
+# Frontend development
+cd frontend && npm run dev
+
+# Backend development
+cd backend && python run.py
+
+# Test WebSocket connection
+cd backend && python test_client.py
 ```
 
-3. Create production environment file:
-```bash
-cp .env.sample .env
-nano .env  # Add your OPENAI_API_KEY and update URLs
-```
-
-4. Update the Caddyfile:
-```bash
-sudo nano /etc/caddy/Caddyfile
-```
-
-Add the configuration from the project's Caddyfile, then:
-```bash
-sudo caddy validate --config /etc/caddy/Caddyfile
-sudo systemctl reload caddy
-```
-
-5. Start the application:
-```bash
-docker compose up -d --build
-```
-
-6. Verify deployment:
-```bash
-docker compose ps
-curl http://localhost:3000/api/health
-```
-
-## 📁 Project Structure
-
-```
-├── frontend/          # SvelteKit application
-│   ├── src/
-│   │   ├── lib/       # Components, stores, i18n
-│   │   ├── routes/    # Page routes
-│   │   └── app.css    # Global styles
-│   └── static/        # Static assets (CV PDF)
-├── backend/           # Flask application
-│   ├── app/           # Application modules
-│   └── static/        # Profile data (YAML)
-├── docker-compose.yml # Container orchestration
-├── Caddyfile         # Reverse proxy config
-└── .env.sample       # Environment template
-```
-
-## 🔧 Configuration
-
-### Environment Variables
+## 📝 Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `OPENAI_API_KEY` | OpenAI API key | Required |
-| `PUBLIC_WS_URL` | WebSocket URL | `wss://hire.smeister.xyz/ws/chat` |
-| `PUBLIC_API_URL` | API base URL | `https://hire.smeister.xyz/api` |
+| `OPENAI_API_KEY` | OpenAI API key for chat functionality | Required |
+| `PUBLIC_WS_URL` | WebSocket endpoint URL | `ws://localhost:8001/ws/chat` |
+| `PUBLIC_API_URL` | API base URL | `http://localhost:8001/api` |
+| `REDIS_URL` | Redis connection string | `redis://redis:6379` |
 
-### Customization
+## 🚀 Deployment Options
 
-1. **Profile Data**: Edit `backend/static/profile.yaml`
-2. **CV**: Replace `frontend/static/cv.pdf`
-3. **Translations**: Update `frontend/src/lib/i18n/[en|nl].json`
-4. **Colors**: Modify `frontend/tailwind.config.js`
+### Docker Compose (Recommended)
+Complete stack with automatic service orchestration
 
-## 🚨 Monitoring
-
-### Health Checks
-- Frontend: `GET /api/health`
-- Backend: `GET /healthz`
-
-### Logs
-```bash
-# View all logs
-docker compose logs -f
-
-# Specific service
-docker compose logs -f backend
-```
-
-### Container Status
-```bash
-docker compose ps
-```
-
-## 🔒 Security
-
-- Rate limiting: 5 requests/minute per IP
-- Input validation and sanitization
-- Security headers via Caddy
-- No conversation data stored
-- HTTPS enforced in production
-
-## 📝 Development
-
-### Frontend Development
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-### Backend Development
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # or `venv\Scripts\activate` on Windows
-pip install -r requirements.txt
-python -m flask run
-```
-
-## 🐛 Troubleshooting
-
-### WebSocket Connection Issues
-- Check if backend is running: `docker compose ps`
-- Verify WebSocket URL in `.env`
-- Check browser console for errors
-
-### Rate Limiting
-- Redis must be running
-- Check Redis connection in logs
-
-### Chat Not Working
-- Verify OpenAI API key
-- Check backend logs for errors
-- Ensure sufficient API credits
+### Manual Deployment
+1. Deploy backend with Gunicorn + eventlet
+2. Build and serve frontend with Node.js
+3. Configure Caddy for reverse proxy
+4. Set up Redis for rate limiting
 
 ## 📄 License
 
-MIT License - feel free to use this project as a template for your own portfolio.
+Private project for recruitment purposes.
 
-## 🤝 Contributing
+## 👤 Contact
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+**Sander Kaatee**
+- Email: sanderkaatee@outlook.com
+- Phone: +31-6-3433-2873
+- LinkedIn: [linkedin.com/in/sander-kaatee](https://linkedin.com/in/sander-kaatee)
+- GitHub: [github.com/SanderKaatee](https://github.com/SanderKaatee)
 
 ---
 
-**SHA-256**: `[Generated after final commit]`
-
-Built with ❤️ using SvelteKit, Flask, and Docker
+*Built with ❤️ using SvelteKit, Flask, and OpenAI*
