@@ -311,7 +311,7 @@
             <div class="mt-6 p-4 bg-surface-100 dark:bg-surface-800 rounded-lg">
                 <p class="text-surface-600 dark:text-surface-300 text-center">
                     {$t.portfolio.moreOnGithub} <a
-                        href="https://github.com/SanderKaatee/job-applications"
+                        href="https://github.com/SanderKaatee/"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="text-primary-600 dark:text-primary-400 hover:underline font-medium"

@@ -7,7 +7,7 @@
 
 <svelte:head>
   <title>Sander Kaatee - Solicitatie UMCG</title>
-  <meta name="description" content="Experienced full-stack developer available for hire. Expertise in modern web technologies, scalable architectures, and delivering business value." />
+  <meta name="description" content="Job Application by Sander Kaatee for the UMCG" />
 </svelte:head>
 
 <div class="space-y-20">
