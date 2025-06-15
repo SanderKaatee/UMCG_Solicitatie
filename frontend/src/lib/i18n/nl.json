@@ -1,0 +1,129 @@
+{
+  "hero": {
+    "title": "Huur Sander Kaatee in",
+    "subtitleCycle": [
+      "BSc Kunstmatige Intelligentie",
+      "Full-Stack Ontwikkelaar",
+      "Prompt-Engineer",
+      "Sociaal en Ethisch Bewust"
+    ],
+    "cta": "Laten we praten"
+  },
+  "nav": {
+    "chat": "Chat met AI",
+    "motivation": "Motivatie",
+    "cv": "CV",
+    "portfolio": "Portfolio"
+  },
+  "chat": {
+    "title": "Vraag me alles",
+    "placeholder": "Vraag naar mijn ervaring, vaardigheden of projecten...",
+    "send": "Verstuur",
+    "thinking": "Aan het denken...",
+    "error": "Er is iets misgegaan. Probeer het opnieuw.",
+    "rateLimit": "Te veel verzoeken. Wacht even."
+  },
+  "motivation": {
+    "title": "Motivatiebrief",
+    "content": "Beste manager 'werving & selectie' en Applied AI-team van het UMCG,\n\nWelkom bij mijn sollicitatie! Ik heb deze interactieve website in een weekend gebouwd met één doel: aantonen dat ik graag praktische, full-stack AI-oplossingen bouw en dat ik snel nieuwe technologieën kan leren en inzetten.\n\nIn mijn huidige baan richt ik mij altijd op het creëren van praktische waarde door cognitieve belasting te verminderen en complexe processen te vereenvoudigen. Zo ontwikkelde ik een automatische transcriptieservice die supportgesprekken omzet naar gestructureerde tickets en bouwde ik een slimme supportbot met LangChain en RAG waarmee collega’s direct toegang hebben tot benodigde kennis. Natuurlijk ben ik trots op die technische prestaties, maar het meeste energie krijg ik juist van innoveren en experimenteren. Daarom sprak jullie vacature me ook meteen aan: een plek waar ideeën en initiatief écht gewaardeerd worden en waar je mag uitproberen, zelfs als het soms fout gaat. Mijn recente gesprek met Akshay Biere bevestigde dit gevoel alleen maar, en ik ben ontzettend enthousiast over het vooruitzicht om onderdeel uit te maken van een optimistisch en vooruitstrevend team dat niet bang is om samen te experimenteren en fouten te maken.\n\nDat ik specifiek bij het UMCG wil werken is trouwens een bewuste keuze. Ik zoek namelijk iets betekenisvols. Mijn loopbaan combineert altijd al mijn passie voor technologie met een sterke focus op mensen, van mijn psychologie-studie tot mijn klantgerichte supportfunctie. Ik haal voldoening uit het helpen van anderen en wil werken in een omgeving waar mijn inzet duidelijk en positief bijdraagt. Oplossingen bedenken die zorgverleners helpen, patiënten ondersteunen of onderzoek versnellen lijkt me dus precies wat ik zoek.\n\nDeze website zelf is overigens precies het bewijs van mijn vaardigheden. Om dit te bouwen, heb ik mezelf Svelte aangeleerd (een framework uit jullie vacature waar ik nog geen ervaring mee had), gecombineerd met een Flask-backend en gekoppeld aan een OpenAI-chat via WebSockets. Het toont mijn full-stack expertise en mijn vermogen om snel nieuwe dingen op te pikken. Met Microsoft Azure heb ik nog niet uitgebreid gewerkt, maar gezien mijn snelle beheersing van Svelte en ervaring met Docker en cloud-deployments weet ik zeker dat ik Azure vlot onder de knie krijg. Ik kijk ernaar uit om met Azure Machine Learning en OpenAI-services aan de slag te gaan en ben bereid certificeringen te behalen om die kennis te formaliseren.\n\nKortom: mijn praktische vaardigheden, snelle leervermogen en oprechte motivatie om bij te dragen aan slimme zorg zorgen ervoor dat ik vanaf dag één waardevol kan zijn voor jullie team.\n\nBedankt alvast voor jullie tijd en aandacht.\n\nMet vriendelijke groet,\nSander Kaatee\n\nP.S. De AI-chat op deze site mag trouwens alvast het eerste gesprek voeren. Een grapje natuurlijk, maar het laat wel goed zien hoe ik de vaardigheden uit jullie vacature inzet: van prompt engineering tot API-integratie. Dit is een voorbeeld van de praktische en experimentele instelling die ik graag meebreng naar het Applied AI-team."
+  },
+  "portfolio": {
+    "title": "Technisch Portfolio",
+    "enterprise": "Bedrijfsoplossingen",
+    "enterpriseNote": "In mijn huidige rol focus ik op het creëren van praktische AI-oplossingen die de cognitieve belasting verminderen en workflows stroomlijnen. Hoewel ik de code niet openbaar kan delen, demonstreer ik deze projecten graag live.",
+    "competitions": "Wedstrijdprestaties",
+    "public": "Open Source Projecten",
+    "moreOnGithub": "Ontdek meer projecten in mijn",
+    "labels": {
+      "featuredProject": "Uitgelicht Project",
+      "viewResults": "Bekijk resultaten",
+      "github": "GitHub",
+      "liveDemo": "Live Demo",
+      "youAreHere": "U bent hier!",
+      "keyAchievement": "Belangrijkste prestatie:",
+      "placed": "Plaats"
+    },
+    "competitionsList": [
+      {
+        "name": "Solafune — Identifying Deforestation Drivers",
+        "period": "Nov 2024 – Feb 2025",
+        "placement": "35 / 476",
+        "description": "Ontwikkelde een klassegerichte segmentatie-ensemble voor 12-band Sentinel-2 beelden, trainde een aangepaste MSNet (ResNet-50 encoder + pixel-shuffle decoder) met PyTorch Lightning, mixed-precision, Dice + Soft-BCE verlies, en optimaliseerde via Bayesian search (scikit-optimize); bouwde specialisten voor mijnbouw, houtkap en struikgewas en voegde polygon-predicties samen tot GeoJSON, wat resulteerde in een top 8%-klassering.",
+        "link": "https://solafune.com/account/SanderKaatee?menu=participated",
+        "tech": [
+          "Python",
+          "PyTorch",
+          "PyTorch Lightning",
+          "Albumentations",
+          "Segmentation-Models-PyTorch",
+          "timm",
+          "scikit-optimize",
+          "Shapely",
+          "Rasterio",
+          "OpenCV"
+        ]
+      },
+      {
+        "name": "ITU / ESA GeoAI Challenge — Soil Parameter Regression from Hyperspectral Cubes",
+        "period": "Oct – Dec 2023",
+        "placement": "12 / 55",
+        "description": "Herontwierp de initiële pipeline naar een lichte 1D ResNet die direct P, K, Mg en pH voorspelt vanuit 150-bands spectra; gebruikte gemiddeld drie modellen met onafhankelijke seeds, voerde Bayesian hyperparameter optimalisatie uit (scikit-optimize) en agressieve early-stopping, wat ≈20% verbetering op de baseline RMSE opleverde zonder extra metadata of handgemaakte features.",
+        "link": "https://zindi.africa/competitions/geoai-challenge-estimating-soil-parameters-from-hyperspectral-images",
+        "tech": [
+          "Python",
+          "PyTorch",
+          "NumPy / Pandas",
+          "scikit-learn",
+          "scikit-optimize",
+          "Matplotlib / Seaborn"
+        ]
+      }
+    ],
+    "enterpriseProjects": [
+      {
+        "name": "Geautomatiseerde Transcriptieservice",
+        "description": "Een intelligent systeem ontwikkeld dat supportgesprekken automatisch transcribeert en omzet in gestructureerde tickets, wat de handmatige werklast voor het supportteam aanzienlijk vermindert.",
+        "impact": "Tijd voor het aanmaken van tickets met 70% verminderd"
+      },
+      {
+        "name": "RAG-aangedreven Kennisbank",
+        "description": "Een intelligente supportbot gebouwd met Retrieval-Augmented Generation om collega's direct toegang te geven tot bedrijfskennis, wat de responstijden en consistentie verbetert.",
+        "impact": "Gemiddelde oplostijd van vragen teruggebracht van uren naar seconden"
+      }
+    ],
+    "publicProjects": [
+      {
+        "name": "Interactieve Recruitersite (Deze Website!)",
+        "description": "Deze full-stack applicatie in een weekend gebouwd om mijn huidige vaardigheden te demonstreren. Bevat real-time AI-chat, meertalige ondersteuning en een modern, responsief ontwerp.",
+        "highlight": "🚀 U bekijkt dit project op dit moment! Speciaal gebouwd voor de sollicitatie bij het UMCG.",
+        "keyAchievement": "SvelteKit vanaf nul geleerd in een weekend en geïntegreerd met een Flask-backend, wat snelle technologie-adoptie en full-stack capaciteiten aantoont."
+      },
+      {
+        "name": "Trickie.me",
+        "description": "Een speelse draai aan Nederlandse betaalverzoeken met gamificatie. Full-stack Flask-app met op canvas gebaseerd radspel, Docker-implementatie en responsief ontwerp."
+      },
+      {
+        "name": "SomethingLikeMeGen",
+        "description": "Automatische muziekvideogenerator met behulp van computer vision. Analyseert films op gezichten, creëert scènebewuste knipsels en synchroniseert met audiotracks."
+      },
+      {
+        "name": "GPT Speelt Pokémon",
+        "description": "Een autonome Pokémon Red-speler gebouwd met GPT-4 Vision direct na de lancering (in 2023). AI analyseert schermafbeeldingen, stelt hiërarchische doelen en genereert knopsequenties om end-to-end te spelen. Oorspronkelijk overwogen om live te streamen op Twitch/YouTube, maar geaarzeld vanwege kosten en twijfels over de gaming-vaardigheden van GPT-4. Nu 'Claude Speelt Pokémon' trending is op Twitch, is het duidelijk dat dit een gemiste kans was. Toch is het een geweldig praktijkvoorbeeld van toegepaste AI."
+      }
+    ],
+    "githubPortfolioLink": "GitHub portfolio →"
+  },
+  "cv": {
+    "title": "CV",
+    "download": "Download PDF",
+    "loading": "CV laden..."
+  },
+  "theme": {
+    "toggle": "Thema wisselen",
+    "light": "Lichte modus",
+    "dark": "Donkere modus"
+  },
+  "language": {
+    "toggle": "Switch to English"
+  }
+}

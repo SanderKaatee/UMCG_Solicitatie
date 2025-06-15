@@ -1,0 +1,129 @@
+{
+  "hero": {
+    "title": "Hire Sander Kaatee",
+    "subtitleCycle": [
+      "BSc Artificial Intelligence",
+      "Full-Stack Developer",
+      "Prompt-Engineer",
+      "Socially and Ethically Minded"
+    ],
+    "cta": "Let's Talk"
+  },
+  "nav": {
+    "chat": "Chat with AI",
+    "motivation": "Motivation",
+    "cv": "Resume",
+    "portfolio": "Portfolio"
+  },
+  "chat": {
+    "title": "Ask Me Anything",
+    "placeholder": "Ask about my experience, skills, or projects...",
+    "send": "Send",
+    "thinking": "Thinking...",
+    "error": "Something went wrong. Please try again.",
+    "rateLimit": "Too many requests. Please wait a moment."
+  },
+  "motivation": {
+    "title": "Motivational Letter",
+    "content": "Dear Hiring Manager and the Applied AI Team at UMCG,\n\nWelcome to my application. I built this interactive website over a weekend for one reason: to demonstrate my passion for building practical, full-stack AI solutions and my ability to rapidly learn and deploy new technologies.\n\nIn my current role, my focus is always on creating tangible value by reducing cognitive load and streamlining complex workflows. I've developed an automated transcription service that turns support calls into structured tickets and built an intelligent support bot using LangChain and RAG to give my colleagues instant access to knowledge. While I am proud of these technical achievements, I am most energized when I can innovate and experiment. This drive to build and take initiative is why the description of your team attracted me (as a place where \"ideas and initiative are truly valued\"). My recent conversation with Akshay Biere confirmed this, and I am incredibly excited by the prospect of joining an optimistic and forward-thinking team that is not afraid to try and fail together.\n\nMy desire to join UMCG is also a deliberate choice to align my technical skills with work that is unambiguously positive. My career has always balanced a passion for technology with a focus on people, from my studies in Psychology to my work in a client-facing support role. I thrive on helping others, and I am looking for an environment where that help has a clear and meaningful impact. The opportunity to develop solutions that directly support patients, assist clinicians, or accelerate medical research offers a sense of purpose that is uniquely compelling.\n\nThis website itself is a testament to my capabilities. To build it, I taught myself Svelte (a framework mentioned in your vacancy that I had no experience with) and integrated a Flask backend with an OpenAI-powered chat via WebSockets. It demonstrates my full-stack proficiency and my commitment to continuous learning. While I haven't worked extensively with Microsoft Azure yet, my quick grasp of Svelte and my experience with Docker and cloud deployments make me confident that I can master the Azure AI stack swiftly. I am eager to dive into Azure Machine Learning and OpenAI services and am prepared to pursue certifications to formalize that knowledge.\n\nI am confident that my practical skills, learning agility, and genuine drive to contribute to smart healthcare will enable me to be a valuable member of your team from day one.\n\nThank you for your time and consideration.\n\nMet vriendelijke groet (With kind regards),\nSander Kaatee\n\nP.S. I invite you to interact with the AI chat on this site. I built it as a practical way to demonstrate the skills mentioned in your vacancy, from prompt engineering to API integration. Jokingly, it's ready to conduct the first round of the interview. It's a small example of the hands-on, experimental approach I'm excited to bring to the Applied AI team."
+  },
+  "portfolio": {
+    "title": "Technical Portfolio",
+    "enterprise": "Enterprise Solutions",
+    "enterpriseNote": "At my current role, I focus on creating practical AI solutions that reduce cognitive load and streamline workflows. While I cannot share the code publicly, I'm happy to demonstrate these projects live.",
+    "competitions": "Competition Achievements",
+    "public": "Open Source Projects",
+    "moreOnGithub": "Explore more projects in my",
+    "labels": {
+      "featuredProject": "Featured Project",
+      "viewResults": "View results",
+      "github": "GitHub",
+      "liveDemo": "Live Demo",
+      "youAreHere": "You're here!",
+      "keyAchievement": "Key Achievement:",
+      "placed": "Placed"
+    },
+    "competitionsList": [
+      {
+        "name": "Solafune — Identifying Deforestation Drivers",
+        "period": "Nov 2024 – Feb 2025",
+        "placement": "35 / 476",
+        "description": "Engineered a class-aware segmentation ensemble for 12-band Sentinel-2 imagery. Trained a custom MSNet (ResNet-50 encoder + pixel-shuffle decoder) in PyTorch Lightning with mixed-precision and Dice + Soft-BCE loss. Used Bayesian optimization via scikit-optimize for augmentation, sampling, and LR schedule, guided by permutation importance. Built class specialists for mining, logging, and shrubland, merging polygon predictions into a single GeoJSON via a lightweight ensembler—boosting F1 and landing in the top 8%.",
+        "link": "https://solafune.com/account/SanderKaatee?menu=participated",
+        "tech": [
+          "Python",
+          "PyTorch",
+          "PyTorch Lightning",
+          "Albumentations",
+          "Segmentation-Models-PyTorch",
+          "timm",
+          "scikit-optimize",
+          "Shapely",
+          "Rasterio",
+          "OpenCV"
+        ]
+      },
+      {
+        "name": "ITU / ESA GeoAI Challenge — Soil Parameter Regression from Hyperspectral Cubes",
+        "period": "Oct – Dec 2023",
+        "placement": "12 / 55",
+        "description": "Re-engineered the starter pipeline into a lightweight 1-D ResNet that ingests 150-band spectra and directly regresses P, K, Mg and pH. Three independently seeded models were averaged to tame variance; Bayesian hyper-parameter search (scikit-optimize) and aggressive early-stopping shaved ≈20 % off the public-baseline RMSE without extra metadata or handcrafted features.",
+        "link": "https://zindi.africa/competitions/geoai-challenge-estimating-soil-parameters-from-hyperspectral-images",
+        "tech": [
+          "Python",
+          "PyTorch",
+          "NumPy / Pandas",
+          "scikit-learn",
+          "scikit-optimize",
+          "Matplotlib / Seaborn"
+        ]
+      }
+    ],
+    "enterpriseProjects": [
+      {
+        "name": "Automated Transcription Service",
+        "description": "Developed an intelligent system that automatically transcribes support calls and converts them into structured tickets, significantly reducing manual workload for the support team.",
+        "impact": "Reduced ticket creation time by 70%"
+      },
+      {
+        "name": "RAG-Powered Knowledge Base",
+        "description": "Built an intelligent support bot using Retrieval-Augmented Generation to give colleagues instant access to company knowledge, improving response times and consistency.",
+        "impact": "Decreased average query resolution time from hours to seconds"
+      }
+    ],
+    "publicProjects": [
+      {
+        "name": "Interactive Recruiter Site (This Website!)",
+        "description": "Built this full-stack application over a weekend to demonstrate my current skills. Features real-time AI chat, multilingual support, and modern responsive design.",
+        "highlight": "🚀 You're viewing this project right now! Built specifically for UMCG application.",
+        "keyAchievement": "Learned SvelteKit from scratch over a weekend and integrated it with a Flask backend, demonstrating rapid technology adoption and full-stack capabilities."
+      },
+      {
+        "name": "Trickie.me",
+        "description": "A playful twist on Dutch payment requests with gamification. Full-stack Flask app with Canvas-based wheel game, Docker deployment, and responsive design."
+      },
+      {
+        "name": "SomethingLikeMeGen",
+        "description": "Automatic music video generator using computer vision. Analyzes movies for faces, creates scene-aware cuts, and syncs to audio tracks."
+      },
+      {
+        "name": "GPT Plays Pokemon",
+        "description": "Built an autonomous Pokémon Red player using GPT-4 Vision right after launch (back in 2023). AI analyzes screenshots, sets hierarchical goals, and generates button sequences to play end-to-end. Originally considered live streaming on Twitch/YouTube but hesitated due to cost concerns and doubts about GPT-4's gaming abilities. Now with 'Claude Plays Pokémon' trending on Twitch, it's clear this was a missed opportunity. Still, it's a great real-world highlight of applied AI."
+      }
+    ],
+    "githubPortfolioLink": "GitHub portfolio →"
+  },
+  "cv": {
+    "title": "Resume",
+    "download": "Download PDF",
+    "loading": "Loading resume..."
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "language": {
+    "toggle": "Switch to Dutch"
+  }
+}
