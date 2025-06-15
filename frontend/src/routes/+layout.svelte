@@ -21,33 +21,45 @@
     class="sticky top-0 z-50 bg-white/80 dark:bg-surface-900/80 backdrop-blur-md border-b border-surface-200 dark:border-surface-700"
   >
     <div class="container mx-auto px-4 py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-8">
-          <a href="/" class="text-2xl font-bold text-primary-500">SK</a>
-          <AnchorNav />
-        </div>
+      <div
+        class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+      >
+        <!-- Logo -->
+        <a
+          href="/"
+          class="text-2xl font-bold text-primary-500 text-center sm:text-left"
+          >SK</a
+        >
 
-        <div class="flex items-center gap-2">
-          <LanguageToggle />
-          <ThemeToggle />
+        <!-- All buttons container -->
+        <div class="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-8">
+          <!-- Nav items - will use updated AnchorNav -->
+          <div class="col-span-2 contents sm:block">
+            <AnchorNav />
+          </div>
+
+          <!-- Toggles -->
+          <div class="contents sm:flex sm:items-center sm:gap-2">
+            <LanguageToggle />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </div>
   </header>
-
   <!-- Hero Section -->
-  <section
-    class="border-b border-surface-200 dark:border-surface-700"
-  >
+  <section class="border-b border-surface-200 dark:border-surface-700">
     <div
       class="relative overflow-hidden bg-gradient-to-br from-primary-50 to-surface-100 dark:from-surface-900 dark:to-surface-800"
     >
       <!-- Particles are mounted here, contained within this relative div -->
       <Particles />
-      
+
       <!-- Grid pattern on top of particles -->
-      <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
-      
+      <div
+        class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"
+      ></div>
+
       <!-- Hero content with higher z-index -->
       <div class="container mx-auto px-4 py-20 relative z-20">
         <div class="text-center animate-fade-in">
@@ -83,9 +95,10 @@
     </div>
   </section>
 
-
   <!-- Main Content -->
-  <main class="container mx-auto px-4 md:px-16 lg:px-48 xl:px-64 2xl:px-80 py-8">
+  <main
+    class="container mx-auto px-4 md:px-16 lg:px-48 xl:px-64 2xl:px-80 py-8"
+  >
     <slot />
   </main>
 
