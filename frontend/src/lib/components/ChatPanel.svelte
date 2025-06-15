@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { v4 as uuidv4 } from "uuid";
   import { t } from "$lib/stores/language";
+  import { marked } from "marked"; // Add this import
 
   /** ---- message model ---- */
   interface Message {
@@ -9,6 +10,17 @@
     role: "user" | "assistant";
     content: string;
     timestamp: Date;
+  }
+
+  /** ---- Configure marked for better formatting ---- */
+  marked.setOptions({
+    breaks: true, // Convert line breaks to <br>
+    gfm: true,    // GitHub Flavored Markdown
+  });
+
+  /** ---- Helper function to parse markdown ---- */
+  function parseMarkdown(content: string): string {
+    return marked(content) as string;
   }
 
   /** ---- state ---- */
@@ -42,6 +54,19 @@
     "What are Sander's long-term career ambitions?",
   ];
 
+  /** ---- Prepare conversation history for API ---- */
+  function prepareConversationHistory(): Array<{role: string, content: string}> {
+    // Skip the initial welcome message and prepare history for API
+    // Limit to last 10 messages to prevent context overflow
+    const relevantMessages = messages.slice(1, -1); // Exclude welcome and current message
+    const recentMessages = relevantMessages.slice(-10); // Keep last 10 messages
+    
+    return recentMessages.map(msg => ({
+      role: msg.role,
+      content: msg.content
+    }));
+  }
+
   /** ---- Send user input and get response ---- */
   async function sendMessage() {
     const trimmedInput = input.trim();
@@ -65,11 +90,17 @@
     scrollToBottom();
 
     try {
+      // Prepare conversation history
+      const history = prepareConversationHistory();
+
       // Fetch the complete response from the backend
       const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: trimmedInput }),
+        body: JSON.stringify({ 
+          message: trimmedInput,
+          history: history 
+        }),
       });
 
       if (!response.ok) {
@@ -157,7 +188,15 @@
             ? 'bg-primary-500 text-white'
             : 'bg-surface-100 dark:bg-surface-700'} rounded-lg px-4 py-2"
         >
-          <p class="whitespace-pre-wrap">{message.content}</p>
+          {#if message.role === 'assistant'}
+            <!-- Render assistant messages with markdown support -->
+            <div class="prose prose-sm max-w-none dark:prose-invert">
+              {@html parseMarkdown(message.content)}
+            </div>
+          {:else}
+            <!-- Render user messages as plain text -->
+            <p class="whitespace-pre-wrap">{message.content}</p>
+          {/if}
         </div>
       </div>
     {/each}
@@ -188,7 +227,6 @@
     </div>
   {/if}
 
-
   <form on:submit|preventDefault={sendMessage} class="flex gap-2">
     <input
       bind:value={input}
@@ -205,4 +243,61 @@
       {$t.chat.send}
     </button>
   </form>
+
+  <!-- AI Disclaimer -->
+  <div class="mt-3 pt-2 border-t border-surface-200 dark:border-surface-600">
+    <p class="text-xs text-surface-500 dark:text-surface-400 text-center leading-relaxed">
+      <span class="inline-flex items-center gap-1">
+        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+        </svg>
+        <strong>{$t.chat.poweredBy}</strong>
+      </span>
+      <br>
+      {$t.chat.disclaimer}
+    </p>
+  </div>
 </div>
+
+<style>
+  /* Custom styles for markdown content */
+  :global(.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6) {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  :global(.prose p) {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+  
+  :global(.prose ol, .prose ul) {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    padding-left: 1.5em;
+  }
+  
+  :global(.prose li) {
+    margin-top: 0.125em;
+    margin-bottom: 0.125em;
+  }
+  
+  :global(.prose strong) {
+    font-weight: 600;
+  }
+  
+  :global(.prose em) {
+    font-style: italic;
+  }
+  
+  :global(.prose code) {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0.125em 0.25em;
+    border-radius: 0.25em;
+    font-size: 0.875em;
+  }
+  
+  :global(.dark .prose code) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+</style>

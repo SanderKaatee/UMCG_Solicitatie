@@ -1,7 +1,7 @@
 # app/routes.py
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO
-from flask_cors import CORS # Import CORS
+from flask_cors import CORS
 import traceback
 from app.openai_client import OpenAIClient
 from app.rate_limiter import RateLimiter
@@ -29,10 +29,10 @@ def register_routes(app: Flask, socketio: SocketIO):
             'service': 'sander-kaatee-backend'
         })
         
-    # --- HTTP Chat Endpoint (Synchronous Version) ---
+    # --- HTTP Chat Endpoint (with Conversation History) ---
     @app.route('/api/chat', methods=['POST'])
-    def handle_chat(): # No longer async
-        """Handles a non-streaming chat request via HTTP POST."""
+    def handle_chat():
+        """Handles a chat request with conversation history via HTTP POST."""
         try:
             client_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
             
@@ -53,8 +53,14 @@ def register_routes(app: Flask, socketio: SocketIO):
             if not message_text:
                 return jsonify({'error': 'Invalid request', 'message': 'Message cannot be empty.'}), 400
 
-            # No longer awaiting the response
-            response_content = openai_client.get_chat_response(message_text)
+            # Get conversation history from request (optional)
+            conversation_history = data.get('history', [])
+            
+            # Get response with conversation context
+            response_content = openai_client.get_chat_response_with_history(
+                message_text, 
+                conversation_history
+            )
             
             return jsonify({'content': response_content})
 

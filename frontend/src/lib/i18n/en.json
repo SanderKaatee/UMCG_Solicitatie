@@ -21,7 +21,9 @@
     "send": "Send",
     "thinking": "Thinking...",
     "error": "Something went wrong. Please try again.",
-    "rateLimit": "Too many requests. Please wait a moment."
+    "rateLimit": "Too many requests. Please wait a moment.",
+    "poweredBy": "Powered by GPT-4.1-mini",
+    "disclaimer": "This AI may occasionally provide inaccurate information. Please verify important details with Sander directly for accuracy."
   },
   "motivation": {
     "title": "Motivational Letter",

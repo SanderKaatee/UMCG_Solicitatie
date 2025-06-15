@@ -21,7 +21,9 @@
     "send": "Verstuur",
     "thinking": "Aan het denken...",
     "error": "Er is iets misgegaan. Probeer het opnieuw.",
-    "rateLimit": "Te veel verzoeken. Wacht even."
+    "rateLimit": "Te veel verzoeken. Wacht even.",
+    "poweredBy": "Aangedreven door GPT-4.1-mini",
+    "disclaimer": "Deze AI kan soms onjuiste informatie geven. Verifieer belangrijke details direct bij Sander voor nauwkeurigheid."
   },
   "motivation": {
     "title": "Motivatiebrief",

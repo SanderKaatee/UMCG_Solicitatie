@@ -19,6 +19,8 @@ class Config:
     TEMPERATURE = 0.7
     STREAM = True
     
-    # Security
+    # Security & Context Management
     MAX_MESSAGE_LENGTH = 1000
-    MAX_CONTEXT_LENGTH = 3000
+    MAX_CONTEXT_LENGTH = 3000  # Deprecated, use MAX_CONTEXT_TOKENS instead
+    MAX_CONTEXT_TOKENS = 3500  # Approximate token limit for context
+    MAX_CONVERSATION_MESSAGES = 10  # Maximum number of messages to keep in history
