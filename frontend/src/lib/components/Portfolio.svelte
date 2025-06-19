@@ -97,7 +97,6 @@
                         <p
                             class="text-sm font-medium text-primary-600 dark:text-primary-400"
                         >
-                            ✨ {project.impact}
                         </p>
                     </div>
                 {/each}

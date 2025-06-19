@@ -84,13 +84,11 @@
     "enterpriseProjects": [
       {
         "name": "Automated Transcription Service",
-        "description": "Developed an intelligent system that automatically transcribes support calls and converts them into structured tickets, significantly reducing manual workload for the support team.",
-        "impact": "Reduced ticket creation time by 70%"
+        "description": "Developed an intelligent system that automatically transcribes support calls and converts them into structured tickets, significantly reducing manual workload for the support team."
       },
       {
         "name": "RAG-Powered Knowledge Base",
-        "description": "Built an intelligent support bot using Retrieval-Augmented Generation to give colleagues instant access to company knowledge, improving response times and consistency.",
-        "impact": "Decreased average query resolution time from hours to seconds"
+        "description": "Built an intelligent support bot using Retrieval-Augmented Generation to give colleagues instant access to company knowledge, improving response times and consistency."
       }
     ],
     "publicProjects": [

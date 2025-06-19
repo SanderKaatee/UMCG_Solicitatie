@@ -84,13 +84,11 @@
     "enterpriseProjects": [
       {
         "name": "Geautomatiseerde Transcriptieservice",
-        "description": "Een intelligent systeem ontwikkeld dat supportgesprekken automatisch transcribeert en omzet in gestructureerde tickets, wat de handmatige werklast voor het supportteam aanzienlijk vermindert.",
-        "impact": "Tijd voor het aanmaken van tickets met 70% verminderd"
+        "description": "Een intelligent systeem ontwikkeld dat supportgesprekken automatisch transcribeert en omzet in gestructureerde tickets, wat de handmatige werklast voor het supportteam aanzienlijk vermindert."
       },
       {
         "name": "RAG-aangedreven Kennisbank",
-        "description": "Een intelligente supportbot gebouwd met Retrieval-Augmented Generation om collega's direct toegang te geven tot bedrijfskennis, wat de responstijden en consistentie verbetert.",
-        "impact": "Gemiddelde oplostijd van vragen teruggebracht van uren naar seconden"
+        "description": "Een intelligente supportbot gebouwd met Retrieval-Augmented Generation om collega's direct toegang te geven tot bedrijfskennis, wat de responstijden en consistentie verbetert."
       }
     ],
     "publicProjects": [
